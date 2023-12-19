@@ -15,10 +15,7 @@ namespace BookStoreV10.Controllers
         {
             return View();
         }
-        public IActionResult LoginAdmin()
-        {
-            return View();
-        }
-            }
+
+       }
     }
 

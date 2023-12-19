@@ -1,19 +1,19 @@
-﻿@model Customer
+﻿@model Admin
 @{
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/LoginLayout.cshtml";
 }
-@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+@using (Html.BeginForm("LoginAdmins", "LoginAdmin", FormMethod.Post))
 {
-    
-    <div class="page-wrapper">
 
+    <div class="page-wrapper">
         <div class="prompt-container">
-        <h1>Login</h1>
+            <h1>Login Admin</h1>
+
             @using (Html.BeginForm("ActionName", "ControllerName", FormMethod.Post))
             {
-                <label for="uname"><b>Email</b></label>
-                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Enter Email" })
+                <label for="uname"><b>Admin Name</b></label>
+                @Html.TextBoxFor(m => m.Name, new { @placeholder = "Enter Name" })
 
                 <label for="psw"><b>Password</b></label>
                 @Html.PasswordFor(m => m.Password, new { @placeholder = "Enter Password" })
@@ -22,24 +22,24 @@
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
                 <div style="margin-top: 5px;">
-                    @if (ViewBag.LoginStatus != null && ViewBag.LoginStatus == 0)
+                    @if (ViewBag.LoginAdminStatus != null && ViewBag.LoginAdminStatus == 0)
                     {
                         <div style="color: #ff0000; background-color:#fff;
-            ">
+                                                ">
                             <p>
                                 Invalid Email or Password, please try again.
                             </p>
                         </div>
                     }
                 </div>
-
                 <button type="submit">Sign in</button>
+                <div class="container" style="    display: flex;justify-content: end;margin-top: 20px;">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Cancel</a>
+                </div>
             }
-            <div class="container" style="background-color:#f1f1f1 display:flex; align-items:center; margin-top:20px;">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Cancel</a>
-                <span><a class="nav-link text-dark" style=" float:right;" asp-area="" asp-controller="CustomerRegister" asp-action="Create">Register</a></span>
-            </div>
+           
         </div>
+        
     </div>
 
 }

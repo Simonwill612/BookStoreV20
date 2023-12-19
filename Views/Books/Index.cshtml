@@ -7,9 +7,9 @@
 
 <h1>Book Management</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<button style="background-color:#ccc;  padding:15px; border-radius:5px; ">
+    <a asp-action="Create" style="text-decoration:none;">Create New</a>
+</button>
 <table class="table">
     <thead>
         <tr>
@@ -17,10 +17,10 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AuthorName)
+                @Html.DisplayNameFor(model => model.Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PublisherName)
+                @Html.DisplayNameFor(model => model.Publisher)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Describe)
@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
+                @Html.DisplayNameFor(model => model.Image)
             </th>
             
             
@@ -43,10 +43,10 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AuthorName)
+                @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PublisherName)
+                @Html.DisplayFor(modelItem => item.Publisher)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Describe)
@@ -56,8 +56,8 @@
             </td>
                 <td>
                     <!-- Display the image with a link to the full-size image -->
-                    <a href="@item.ImageUrl" target="_blank">
-                        <img src="@item.ImageUrl" alt="Cover Image" style="max-width: 100px; max-height: 100px; display: block; margin: auto;">
+                    <a href="@item.Image" target="_blank">
+                        <img src="@item.Image" alt="Cover Image" style="max-width: 100px; max-height: 100px; display: block; margin: auto;">
                     </a>
                 </td>
                 <td>

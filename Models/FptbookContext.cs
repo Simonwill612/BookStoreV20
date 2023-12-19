@@ -47,10 +47,6 @@ public partial class FptbookContext : DbContext
             entity.HasIndex(e => e.AdminId).IsUnique();
 
             entity.Property(e => e.AdminId).HasColumnName("AdminID");
-            entity.Property(e => e.ImageUrl)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("ImageURL");
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -87,7 +83,7 @@ public partial class FptbookContext : DbContext
             entity.Property(e => e.BookId)
                 .ValueGeneratedNever()
                 .HasColumnName("BookID");
-            entity.Property(e => e.ImageUrl)
+            entity.Property(e => e.Image)
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("ImageURL");
@@ -98,11 +94,11 @@ public partial class FptbookContext : DbContext
                 .IsUnicode(false);
 
             entity.HasOne(d => d.AuthorNameNavigation).WithMany(p => p.Books)
-                .HasForeignKey(d => d.AuthorName)
+                .HasForeignKey(d => d.Author)
                 .HasConstraintName("FK_Books_Authors");
 
             entity.HasOne(d => d.PublisherNameNavigation).WithMany(p => p.Books)
-                .HasForeignKey(d => d.PublisherName)
+                .HasForeignKey(d => d.Publisher)
                 .HasConstraintName("FK_Books_Publishers");
 
             entity.HasOne(d => d.StoreOwner).WithMany(p => p.Books)
@@ -160,10 +156,6 @@ public partial class FptbookContext : DbContext
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .IsUnicode(false);
-            entity.Property(e => e.ImageUrl)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("ImageURL");
             entity.Property(e => e.Password)
                 .HasMaxLength(50)
                 .IsUnicode(false);

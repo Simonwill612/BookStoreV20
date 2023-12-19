@@ -10,7 +10,7 @@ public partial class Customer
 
     public string? Password { get; set; }
 
-    public string? ImageUrl { get; set; }
+    public string? Imageurl { get; set; }
     
     public string? Phone { get; set; }
 

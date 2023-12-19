@@ -26,6 +26,11 @@ namespace BookStoreV10.Controllers
             var books = await _context.Book.Include(b => b.StoreOwner).ToListAsync();
             return View(books);
         }
+        public async Task<IActionResult> CustomerView()
+        {
+            var books = await _context.Book.Include(b => b.StoreOwner).ToListAsync();
+            return View(books);
+        }
 
         public IActionResult Privacy()
         {

@@ -55,7 +55,7 @@ namespace BookStoreV10.Controllers
                     CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("CustomerView", "Home");
             }
             return View();
         }

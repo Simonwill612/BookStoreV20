@@ -5,19 +5,16 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Managerment Admin</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<button  style="background-color:#ccc;  padding:15px; border-radius:5px; ">
+    <a asp-action="Create" style="text-decoration:none;">Create New</a>
+</button>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -32,15 +29,11 @@
                 @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.AdminId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.AdminId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AdminId">Delete</a>
             </td>
         </tr>
 }

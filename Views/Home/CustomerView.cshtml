@@ -1,0 +1,204 @@
+﻿@model IEnumerable<BookStoreV10.Models.Book>
+
+@{
+    ViewData["Title"] = "CustomerView";
+    Layout = "~/Views/Shared/CustomerView.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<section class="welcome_area">
+    <div class="welcome_slides owl-carousel">
+        <!-- Single Slide Start -->
+        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url(/img/bg-img/bg-1.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome_slide_text">
+                            <h6 data-animation="bounceInDown" data-delay="0" data-duration="500ms">A valuable book is the lifeblood of a spirit, preserved and concealed for the future.</h6>
+                            <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">J.Milton</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide Start -->
+        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url(/img/bg-img/bg-4.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome_slide_text">
+                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">Encountering a good book is worth buying immediately, whether or not one can read it, because sooner or later, it will be needed.</h6>
+                            <h2 data-animation="fadeInUp" data-delay="500ms" data-duration="500ms">W.Churchill</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Slide Start -->
+        <div class="single_slide height-800 bg-img background-overlay" style="background-image: url(/img/bg-img/bg-2.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="welcome_slide_text">
+                            <h6 data-animation="fadeInDown" data-delay="0" data-duration="500ms">Combining understanding with existing experiences and knowledge is a necessary principle when selecting books.</h6>
+                            <h2 data-animation="bounceInDown" data-delay="500ms" data-duration="500ms">Krupxkaia</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ****** Welcome Slides Area End ****** -->
+<!-- ****** Top Catagory Area Start ****** -->
+<section class="top_catagory_area d-md-flex clearfix">
+    <!-- Single Catagory -->
+    <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url(/img/bg-img/bg-2.jpg);">
+        <div class="catagory-content">
+            <h6>On Accesories</h6>
+            <h2>Sale 30%</h2>
+        </div>
+    </div>
+    <!-- Single Catagory -->
+    <div class="single_catagory_area d-flex align-items-center bg-img" style="background-image: url(/img/bg-img/bg-3.jpg);">
+        <div class="catagory-content">
+            <h6>in Store excepting the new collection</h6>
+            <h2>Flash sale 1/1 20%</h2>
+        </div>
+    </div>
+</section>
+<!-- ****** Top Catagory Area End ****** -->
+<!-- ****** Quick View Modal Area Start ****** -->
+<!-- ****** New Arrivals Area End ****** -->
+<section class="new_arrivals_area section_padding_100_0 clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_heading text-center">
+                    <h2>Products</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row karl-new-arrivals">
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
+                    <!-- Product Image -->
+                    <div class="product-img">
+                        <img src="@item.Image" alt="">
+                        <div class="product-quicview">
+                            <a href="~/Books/BookDetail?id=@item.BookId"></a>
+                        </div>
+                    </div>
+                    <!-- Product Description -->
+                    <div class="product-description">
+
+                        <h4 class="product-price">$ @item.Price</h4>
+                        <p>@item.Title</p>
+                        <p>@item.Author</p>
+                        <p>@item.Publisher</p>
+
+
+                        <!-- Add to Cart -->
+                        @*                         <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                    *@
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+    <!-- ****** Offer Area Start ****** -->
+    <section class="offer_area height-700 section_padding_100 bg-img" style="background-image: url(img/bg-img/bg-5.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-end justify-content-end">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="offer-content-area wow fadeInUp" data-wow-delay="1s">
+                        <h2>Complete set of textbooks <span class="karl-level">Hot</span></h2>
+                        <p>Free shipping on all orders</p>
+                        <div class="offer-product-price">
+                            <h3><span class="regular-price">$25.90</span> $15.90</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ****** Offer Area End ****** -->
+    <!-- ****** Popular Brands Area Start ****** -->
+    <section class="karl-testimonials-area section_padding_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section_heading text-center">
+                        <h2>Testimonials</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="karl-testimonials-slides owl-carousel">
+
+                        <!-- Single Testimonial Area -->
+                        <div class="single-testimonial-area text-center">
+                            <span class="quote">"</span>
+                            <h6>"A book is the only place in which you can examine a fragile thought without breaking it, or explore an explosive idea without fear it will go off in your face. It is one of the few havens remaining where a man's mind can get both provocation and privacy." </h6>
+                            <div class="testimonial-info d-flex align-items-center justify-content-center">
+                                <div class="tes-thumbnail">
+                                    <img src="img/bg-img/tes-1.jpeg" alt="">
+                                </div>
+                                <div class="testi-data">
+                                    <p> Edward P. Morgan </p>
+                                    <span>South Hadley, Massachusetts</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Testimonial Area -->
+                        <div class="single-testimonial-area text-center">
+                            <span class="quote">"</span>
+                            <h6>Anyone who reads a book without knowing more than what is written in the book is only using the book half. Books make human intelligence deeper and brighter.</h6>
+                            <div class="testimonial-info d-flex align-items-center justify-content-center">
+                                <div class="tes-thumbnail">
+                                    <img src="img/bg-img/tes-2.jpg" alt="">
+                                </div>
+                                <div class="testi-data">
+                                    <p>G.Létxinh</p>
+                                    <span>Sachsen, Germany</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Testimonial Area -->
+                        <div class="single-testimonial-area text-center">
+                            <span class="quote">"</span>
+                            <h6>"The moment we convince a child, any child, to step over that step, the magical step into the library, we change his or her life forever, for the better. ”</h6>
+                            <div class="testimonial-info d-flex align-items-center justify-content-center">
+                                <div class="tes-thumbnail">
+                                    <img src="img/bg-img/tes-3.jpg" alt="">
+                                </div>
+                                <div class="testi-data">
+                                    <p>Barack Obama</p>
+                                    <span>Honolulu, Hawaii</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+</html>

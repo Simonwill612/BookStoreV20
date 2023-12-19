@@ -19,7 +19,7 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <a class="gallery_img" href="">
-                                    <img class="d-block w-100" src="@Model.ImageUrl" alt="First slide">
+                                    <img class="d-block w-100" src="@Model.Image" alt="First slide">
                                 </a>
                             </div>
                             
@@ -34,9 +34,9 @@
 
                     <h4 class="title">@Model.Title</h4>
                     
-                    <h4 class="price"><a>$ @Model.Price</a></h4>
-                    <h4 class="author">AuthorName: @Model.AuthorName</h4>
-                    <h4 class="publicsher">PublisherName: @Model.PublisherName</h4>
+                    <h4 class="price"><a>$ @Model.Price</a> </h4>
+                    <h4 class="author">Author: <a>@Model.Author</a> </h4>
+                    <h4 class="publicsher">Publisher: <a>@Model.Publisher</a> </h4>
 
                     <p class="available">Available: <span class="text-muted">In Stock</span></p>
 

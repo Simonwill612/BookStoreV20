@@ -16,5 +16,5 @@ public partial class Author
 
     public string? AuthorPhoto { get; set; }
 
-    public virtual ICollection<Book> Books { get; set; } = new List<Book>();
+    public virtual ICollection<Book>? Books { get; set; } = new List<Book>();
 }

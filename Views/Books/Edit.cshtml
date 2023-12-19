@@ -20,14 +20,14 @@
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorName" class="control-label"></label>
-                <input asp-for="AuthorName" class="form-control" />
-                <span asp-validation-for="AuthorName" class="text-danger"></span>
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PublisherName" class="control-label"></label>
-                <input asp-for="PublisherName" class="form-control" />
-                <span asp-validation-for="PublisherName" class="text-danger"></span>
+                <label asp-for="Publisher" class="control-label"></label>
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Describe" class="control-label"></label>
@@ -40,12 +40,19 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CoverImageData" class="control-label"></label>
+                <td>
+                    <!-- Display the image with a link to the full-size image -->
+                    <a href="@Model.Image" target="_blank">
+                        <img src="@Model.Image" alt="Cover Image" style="display: block;">
+                    </a>
+                </td>
+                
             </div>
             
             <div class="form-group">

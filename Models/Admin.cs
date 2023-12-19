@@ -9,7 +9,7 @@ public partial class Admin
 
     public string? Password { get; set; }
 
-    public string? ImageUrl { get; set; }
+    public string? Imageurl { get; set; }
 
     public string? Name { get; set; }
 }
