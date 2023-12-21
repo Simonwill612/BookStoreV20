@@ -10,9 +10,9 @@ public partial class Book
 
     public string? Title { get; set; }
 
-    public string? Author { get; set; }
+    public int? AuthorId { get; set; }
 
-    public string? Publisher { get; set; }
+    public int? PublisherId { get; set; }
 
     public string? Describe { get; set; }
 
@@ -27,13 +27,13 @@ public partial class Book
 
     public int? StoreOwnerId { get; set; }
 
-    public virtual Author? AuthorNameNavigation { get; set; }
+    public virtual Author? Author { get; set; }
 
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 
-    public virtual Publisher? PublisherNameNavigation { get; set; }
+    public virtual Publisher? Publisher { get; set; }
 
     public virtual StoreOwner? StoreOwner { get; set; }
 }

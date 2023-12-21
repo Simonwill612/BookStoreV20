@@ -92,7 +92,7 @@
                 <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
                     <!-- Product Image -->
                     <div class="product-img">
-                        <img src="@item.Image" alt="">
+                        <div class="tg-frontcover"><img src="/img/product-img/@Html.DisplayFor(modelItem => item.Image)" alt="no image ";"></div>
                         <div class="product-quicview">
                             <a href="~/Books/BookDetail?id=@item.BookId"></a>
                         </div>
@@ -102,8 +102,7 @@
 
                         <h4 class="product-price">$ @item.Price</h4>
                         <p>@item.Title</p>
-                        <p>@item.Author</p>
-                        <p>@item.Publisher</p>
+
 
 
                         <!-- Add to Cart -->

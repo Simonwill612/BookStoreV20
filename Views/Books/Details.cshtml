@@ -1,67 +1,91 @@
 ﻿@model BookStoreV10.Models.Book
+<style>
+    #customers {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+</style>
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+<h1>Details Admin</h1>
 
-<h1>Details</h1>
+<table id="customers">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Puslisher
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+           Price
+        </th>
+        <th>
+            Image
+        </th>
+        
+        <th></th>
+    </tr>
+    <div>
+    <tr>
+        <td>
+                @Html.DisplayFor(model => model.Title)
+        </td>
+        <td>
+                @Html.DisplayFor(model => model.Author.AuthorName)
+        </td>
+        <td>
+                @Html.DisplayFor(model => model.Publisher.PublisherName)
+        </td>
+        <td>
+                @Html.DisplayFor(model => model.Describe)
+        </td>
+        <td>
+                $@Html.DisplayFor(model => model.Price)
+        </td>
+        <td>
+            <img src="/img/product-img/@Html.DisplayFor(model => model.Image)" alt="No Image" style="max-width: 100px; max-height: 100px; display: block; margin: auto;">
 
-<div>
-    <h4>Book</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Author)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Publisher)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Publisher)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Describe)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Describe)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CoverImageData)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CoverImageData)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StoreOwner)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StoreOwner.StoreOwnerId)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.BookId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+        </td>
+
+        <td>
+            <a asp-action="Edit" asp-route-id="@Model?.BookId"><button>Edit</button></a> 
+            <a asp-action="Index"><button>Back to List</button></a>
+        </td>
+    </tr>
+    </div>
+
+</table>
+
+
+

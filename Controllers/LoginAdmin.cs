@@ -49,7 +49,7 @@ namespace BookStoreV10.Controllers
                    CookieAuthenticationDefaults.AuthenticationScheme,
                    new ClaimsPrincipal(claimsIdentity),
                    authProperties);
-                return RedirectToAction("Index", "Adm");
+                return RedirectToAction("Index", "Admins");
             }
             return View();
         }
