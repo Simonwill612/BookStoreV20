@@ -1,76 +1,46 @@
 ﻿@model BookStoreV10.Models.Customer
-<style>
-    #customers {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
 
-        #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #customers tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #customers tr:hover {
-            background-color: #ddd;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-        }
-</style>
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<h1>Delete Customer</h1>
-<table id="customers">
-<tr>
-    <th>
-        Email
-    </th>
-    <th>
-        Password
-    </th>
-    <th>
-        Phone
-    </th>
-    <th>
-        Gender
-    </th>
-    <th></th>
-</tr>
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
 <div>
-    <tr>
-        <td>
-            @Html.DisplayFor(model => model.Email)
-        </td>
-        <td>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Password)
-        </td>
-        <td>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Phone)
-        </td>
-        <td>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Gender)
-        </td>
-
-        <td>
-            <form asp-action="Delete">
-                <input type="hidden" asp-for="CustomerId" />
-                <input type="submit" value="Delete" class="btn btn-danger" /> 
-            </form>
-            <a asp-action="Index"><button>Back to List</button></a>
-
-        </td>
-    </tr>
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CustomerId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
 </div>
-</table>

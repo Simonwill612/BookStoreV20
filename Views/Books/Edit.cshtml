@@ -5,57 +5,54 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h1>Edit Book</h1>
+<h1>Edit</h1>
 
+<h4>Book</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BookId" />
-            <div class="form-group" style="margin-top: 10px;">
-                <label asp-for="Title" class="control-label" style="    margin-right: 32px;"></label>
-                <input asp-for="Title" class="form-control" style="border-radius:5px; />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AuthorId" class="control-label">Author Name</label>
-                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PublisherId" class="control-label">Publisher Name</label>
-                <select asp-for="PublisherId" class="form-control" asp-items="ViewBag.PublisherId"></select>
+                <label asp-for="Publisher" class="control-label"></label>
+                <input asp-for="Publisher" class="form-control" />
+                <span asp-validation-for="Publisher" class="text-danger"></span>
             </div>
-            <div class="form-group" style="margin-top: 10px;">
-                <label asp-for="Describe" class="control-label" style="    margin-right: 4px;"></label>
-                <textarea asp-for="Describe" class="form-control" style="border-radius:5px; width:300px; height:100px;"></textarea>
+            <div class="form-group">
+                <label asp-for="Describe" class="control-label"></label>
+                <input asp-for="Describe" class="form-control" />
                 <span asp-validation-for="Describe" class="text-danger"></span>
             </div>
-            <div class="form-group" style="margin-top: 10px;">
-                <label asp-for="Price" class="control-label" style="    margin-right: 32px;"></label>
-                <input asp-for="Price" class="form-control" style="border-radius:5px; />
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="form-group" style="margin-top: 10px;">
-                <label asp-for="Image" class="control-label">Image</label>
-                @if (!string.IsNullOrEmpty(Model.Image))
-                {
-                    <div>
-                        
-                        <dd>
-                            <img src="/img/product-img/@Html.DisplayFor(model => model.Image)" style="height: 300px; width:300px; margin-left:100px">
-                            <input asp-for="BookId" class="form-control" style="display:none" />
-
-                        </dd>
-                    </div>
-                }
-            </div>
-
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" type="file" class="form-control" id="imageInput" onchange="previewImage()" />
+                <input asp-for="Image" class="form-control" />
                 <span asp-validation-for="Image" class="text-danger"></span>
-                <img id="imagePreview" src="#" alt="No Image " style="max-width: 100%; max-height: 200px; margin-top: 10px; display: none;" />
+            </div>
+            <div class="form-group">
+                <label asp-for="CoverImageData" class="control-label"></label>
+                <td>
+                    <!-- Display the image with a link to the full-size image -->
+                    <a href="@Model.Image" target="_blank">
+                        <img src="@Model.Image" alt="Cover Image" style="display: block;">
+                    </a>
+                </td>
+                
             </div>
             
             <div class="form-group">
@@ -68,24 +65,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-<script>
-    function previewImage() {
-        var input = document.getElementById('imageInput');
-        var preview = document.getElementById('imagePreview');
-        var file = input.files[0];
-        var reader = new FileReader();
-
-        reader.onloadend = function () {
-            preview.src = reader.result;
-            preview.style.display = 'block';
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = '';
-            preview.style.display = 'none';
-        }
-    }
-</script>
 

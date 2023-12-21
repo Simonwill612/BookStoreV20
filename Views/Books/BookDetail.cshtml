@@ -6,7 +6,7 @@
 }
 
 
-<section style="margin-top:50px " class="single_product_details_area section_padding_0_100">
+<section class="single_product_details_area section_padding_0_100">
     <div class="container">
         <div class="row">
 
@@ -16,10 +16,10 @@
 
                         
 
-                        <div class="carousel-inner" style="border:none;">
+                        <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <a class="gallery_img" href="">
-                                    <div class="tg-frontcover"><img src="/img/product-img/@Html.DisplayFor(modelItem => Model.Image)" alt="No Image" ></div>
+                                    <img class="d-block w-100" src="@Model.Image" alt="First slide">
                                 </a>
                             </div>
                             
@@ -35,8 +35,8 @@
                     <h4 class="title">@Model.Title</h4>
                     
                     <h4 class="price"><a>$ @Model.Price</a> </h4>
-                    <h4 class="author">Author: <a>@Model.Author.AuthorName</a> </h4>
-                    <h4 class="publicsher">Publisher: <a>@Model.Publisher.</a> </h4>
+                    <h4 class="author">Author: <a>@Model.Author</a> </h4>
+                    <h4 class="publicsher">Publisher: <a>@Model.Publisher</a> </h4>
 
                     <p class="available">Available: <span class="text-muted">In Stock</span></p>
 

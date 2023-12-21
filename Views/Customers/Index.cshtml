@@ -32,7 +32,7 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h1>Management Customer</h1>
+<h1>Manage Customers</h1>
 
 <button style="background-color:#ccc;  padding:15px; border-radius:5px; ">
     <a asp-action="Create" style="text-decoration:none;">Create New</a>
@@ -51,7 +51,6 @@
         <th>
             Gender
         </th>
-        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -59,7 +58,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-                 <td>@MaskPassword(item.Password)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Phone)
             </td>
@@ -74,9 +75,3 @@
         </tr>
     }
 </table>
-@functions {
-    public string MaskPassword(string password)
-    {
-        return new string('*', password.Length);
-    }
-}

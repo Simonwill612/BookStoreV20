@@ -1,78 +1,52 @@
 ﻿@model IEnumerable<BookStoreV10.Models.Book>
 
-<style>
-    #customers {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-        #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #customers tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #customers tr:hover {
-            background-color: #ddd;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-        }
-</style>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h1>Management Book</h1>
+<h1>Book Management</h1>
 
 <button style="background-color:#ccc;  padding:15px; border-radius:5px; ">
     <a asp-action="Create" style="text-decoration:none;">Create New</a>
 </button>
-<table id="customers">
-    <tr>
-        <th>
-            Title
-        </th>
-        <th>
-            Author
-        </th>
-        <th>
-            Publisher
-        </th>
-        <th>
-            Describe
-        </th>
-        <th>
-            Price
-        </th>
-        <th>
-            Image
-        </th>
-
-
-        <th></th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Describe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Author.AuthorName)
+                @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
+                @Html.DisplayFor(modelItem => item.Publisher)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Describe)
@@ -80,34 +54,21 @@
             <td>
                 $ @Html.DisplayFor(modelItem => item.Price)
             </td>
+                <td>
+                    <!-- Display the image with a link to the full-size image -->
+                    <a href="@item.Image" target="_blank">
+                        <img src="@item.Image" alt="Cover Image" style="max-width: 100px; max-height: 100px; display: block; margin: auto;">
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreOwner.StoreOwnerId)
+                </td>
             <td>
-                <a href="@item.Image" target="_blank">
-                    <div class="tg-frontcover"><img src="/img/product-img/@Html.DisplayFor(modelItem => item.Image)" alt="No Image" style="width: 200px; height: 200px;"></div>
-                </a>
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.BookId"> <button>Edit</button></a>
-                <a asp-action="Details" asp-route-id="@item.BookId"> <button>Details</button></a>
-                <a asp-action="Delete" asp-route-id="@item.BookId"><button>Delete</button></a>
+                <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
             </td>
         </tr>
-    }
-</table><script>
-    function updateImageUrl(input) {
-        var preview = document.getElementById('coverImagePreview');
-        var imageUrlInput = document.getElementById('coverImageUrl');
-
-        var file = input.files[0];
-
-        if (file) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-                imageUrlInput.value = e.target.result; // Set the image URL
-            };
-
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
+}
+    </tbody>
+</table>

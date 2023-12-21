@@ -1,67 +1,31 @@
 ﻿@model BookStoreV10.Models.Admin
 
-<style>
-    #customers {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-        #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #customers tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #customers tr:hover {
-            background-color: #ddd;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-        }
-</style>
-@functions {
-    public string MaskPassword(string password)
-    {
-        return new string('*', password.Length);
-    }
-}
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<table id="customers">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Password
-        </th>
-        <th></th>
-    </tr>
-<h1>Details Admin</h1>
+<h1>Details</h1>
+
 <div>
-    <tr>
-        <td>
-                @Html.DisplayFor(model => model.Name)
-        </td>
-        <td>@MaskPassword(Model.Password)</td>
-
-
-        <td>
-            <a asp-action="Index"><button>Back to List</button></a>
-        </td>
-    </tr>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
 </div>
-
-</table>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AdminId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

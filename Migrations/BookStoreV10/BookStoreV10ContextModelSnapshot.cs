@@ -30,7 +30,7 @@ namespace BookStoreV10.Migrations.BookStoreV10
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AdminId"));
 
-                    b.Property<string>("Imageurl")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -77,7 +77,10 @@ namespace BookStoreV10.Migrations.BookStoreV10
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookId"));
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<string>("AuthorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AuthorNameNavigationAuthorId")
                         .HasColumnType("int");
 
                     b.Property<byte[]>("CoverImageData")
@@ -86,13 +89,16 @@ namespace BookStoreV10.Migrations.BookStoreV10
                     b.Property<string>("Describe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("PublisherId")
+                    b.Property<string>("PublisherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PublisherNameNavigationPublisherId")
                         .HasColumnType("int");
 
                     b.Property<int?>("StoreOwnerId")
@@ -103,9 +109,9 @@ namespace BookStoreV10.Migrations.BookStoreV10
 
                     b.HasKey("BookId");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("AuthorNameNavigationAuthorId");
 
-                    b.HasIndex("PublisherId");
+                    b.HasIndex("PublisherNameNavigationPublisherId");
 
                     b.HasIndex("StoreOwnerId");
 
@@ -173,15 +179,14 @@ namespace BookStoreV10.Migrations.BookStoreV10
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Imageurl")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CustomerId");
 
@@ -293,21 +298,21 @@ namespace BookStoreV10.Migrations.BookStoreV10
 
             modelBuilder.Entity("BookStoreV10.Models.Book", b =>
                 {
-                    b.HasOne("BookStoreV10.Models.Author", "Author")
+                    b.HasOne("BookStoreV10.Models.Author", "AuthorNameNavigation")
                         .WithMany("Books")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorNameNavigationAuthorId");
 
-                    b.HasOne("BookStoreV10.Models.Publisher", "Publisher")
+                    b.HasOne("BookStoreV10.Models.Publisher", "PublisherNameNavigation")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherId");
+                        .HasForeignKey("PublisherNameNavigationPublisherId");
 
                     b.HasOne("BookStoreV10.Models.StoreOwner", "StoreOwner")
                         .WithMany("Books")
                         .HasForeignKey("StoreOwnerId");
 
-                    b.Navigation("Author");
+                    b.Navigation("AuthorNameNavigation");
 
-                    b.Navigation("Publisher");
+                    b.Navigation("PublisherNameNavigation");
 
                     b.Navigation("StoreOwner");
                 });

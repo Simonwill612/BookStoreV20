@@ -15,6 +15,11 @@ namespace BookStoreV10.Controllers
         {
             _context = context;
         }
+        public async Task<IActionResult> Index()
+        {
+            var books = await _context.Book.Include(b => b.StoreOwner).ToListAsync();
+            return View(books);
+        }
 
 
         public IActionResult Login()
@@ -33,7 +38,7 @@ namespace BookStoreV10.Controllers
             {
                 var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name,_customer.Email),
+            new Claim(ClaimTypes.Name,_customer .Email),
             new Claim("Password", _customer.Password),
             new Claim(ClaimTypes.Gender, _customer.Gender),
         };

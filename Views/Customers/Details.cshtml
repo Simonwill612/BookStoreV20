@@ -1,81 +1,44 @@
 ﻿@model BookStoreV10.Models.Customer
-<style>
-    #customers {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
 
-        #customers td, #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #customers tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #customers tr:hover {
-            background-color: #ddd;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-        }
-</style>
-@functions {
-    public string MaskPassword(string password)
-    {
-        return new string('*', password.Length);
-    }
-}
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-<h1>Details Customer</h1>
 
-<table id="customers">
-    <tr>
-        <th>
-            Email
-        </th>
-        <th>
-            Password
-        </th>
-        <th>
-            Phone
-        </th>
-        <th>
-            Gender
-        </th>
-        <th></th>
-    </tr>
-    <h1>Details Admin</h1>
-    <div>
-    <tr>
-        <td>
-                @Html.DisplayFor(model => model.Email)
-        </td>
-        <td>@MaskPassword(Model.Password)</td>
-        <td>
-                @Html.DisplayFor(model => model.Phone)
-        </td>
-        <td>
-                @Html.DisplayFor(model => model.Gender)
-        </td>
+<h1>Details</h1>
 
-        <td>
-            <a asp-action="Index"><button>Back to List</button></a>
-        </td>
-    </tr>
-    </div>
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
 
-</table>
-
-
-
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.CustomerId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
